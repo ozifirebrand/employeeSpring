@@ -38,31 +38,31 @@ class EmployeeRepositoryTest {
         repository.deleteAll();
     }
 
-    @Test
-    public void testCanAddEmployee(){
+//    @Test
+//    public void testCanAddEmployee(){
+//
+//
+//        assertThat(repository).isNotNull();
+//        log.info("Employee id is :: {}", shayto.getId());
+//        assertThat(shayto.getId()).isNotNull();
+//
+//    }
+//
+//    @Test
+//    public void testCanGetEmployee(){
+//        Employee savedEmployee = repository.findById(shayto.getId()).get();
+//        assertThat(savedEmployee.getId()).isEqualTo(shayto.getId());
+//    }
 
-
-        assertThat(repository).isNotNull();
-        log.info("Employee id is :: {}", shayto.getId());
-        assertThat(shayto.getId()).isNotNull();
-
-    }
-
-    @Test
-    public void testCanGetEmployee(){
-        Employee savedEmployee = repository.findById(shayto.getId()).get();
-        assertThat(savedEmployee.getId()).isEqualTo(shayto.getId());
-    }
-
-    @Test
-    public void testCanDeleteEmployeeRecords(){
-        log.info("Id is :: {}", shayto.getId());
-        assertThat(shayto.getId()).isNotNull();
-
-        repository.deleteEmployeeById(shayto.getId());
-        log.info("Id is :: {}", shayto.getId());
-        assertThat(shayto.getId()).isNull();
-    }
+//    @Test
+//    public void testCanDeleteEmployeeRecords(){
+//        log.info("Id is :: {}", shayto.getId());
+//        assertThat(shayto.getId()).isNotNull();
+//
+//        repository.deleteEmployeeById(shayto.getId());
+//        log.info("Id is :: {}", shayto.getId());
+//        assertThat(shayto.getId()).isNull();
+//    }
 
 
 }
