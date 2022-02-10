@@ -1,4 +1,4 @@
 package africa.semicolon.employeeProgram.dtos;
 
-public class EmployeeRequest {
+public class EmployeeResponse {
 }
