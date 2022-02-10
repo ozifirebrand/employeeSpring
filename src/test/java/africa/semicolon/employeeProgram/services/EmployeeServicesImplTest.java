@@ -1,12 +1,24 @@
 package africa.semicolon.employeeProgram.services;
 
+import africa.semicolon.employeeProgram.data.repositories.EmployeeRepository;
+import africa.semicolon.employeeProgram.dtos.EmployeeRequest;
+import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@Slf4j
 class EmployeeServicesImplTest {
+
+    @Autowired
+    private EmployeeServices services;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +30,17 @@ class EmployeeServicesImplTest {
 
     @Test
     void addEmployee() {
+        EmployeeRequest request = new EmployeeRequest();
+        request.setFirstName("Shayto");
+        request.setLastName("Thomas");
+        request.setJobDescription("HR");
+        log.info("repository is :: {}", services);
+        EmployeeResponse response = services.addEmployee(request);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getId()).isNotNull();
+
+
     }
 
     @Test
