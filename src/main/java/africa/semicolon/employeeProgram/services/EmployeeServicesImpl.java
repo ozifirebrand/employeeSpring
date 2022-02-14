@@ -19,6 +19,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
         newEmployee.setJobDescription(employeeRequest.getJobDescription());
         newEmployee.setLastName(employeeRequest.getLastName());
         newEmployee.setJobDescription(employeeRequest.getJobDescription());
+        newEmployee.setFirstName(employeeRequest.getFirstName());
         repository.save(newEmployee);
         EmployeeResponse response = new EmployeeResponse();
         response.setFirstName(newEmployee.getFirstName());
