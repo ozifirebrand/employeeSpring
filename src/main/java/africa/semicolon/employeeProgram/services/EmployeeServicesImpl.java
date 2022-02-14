@@ -7,6 +7,8 @@ import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmployeeServicesImpl implements EmployeeServices {
 
@@ -30,7 +32,12 @@ public class EmployeeServicesImpl implements EmployeeServices {
     }
     @Override
     public void deleteEmployeeById(Long id){
+        repository.deleteById(id);
+    }
 
+    @Override
+    public EmployeeResponse updateEmployeeRecord(EmployeeRequest employeeRequest) {
+        return null;
     }
 
     @Override
@@ -40,6 +47,16 @@ public class EmployeeServicesImpl implements EmployeeServices {
 
     @Override
     public EmployeeResponse getEmployeeById(Long id) {
+        EmployeeResponse response = new EmployeeResponse();
+        Optional<Employee> optionalEmployee = repository.findById(id);
+        if ( optionalEmployee.isPresent() ) {
+            Employee employee = optionalEmployee.get();
+            response.setFirstName(employee.getFirstName());
+            response.setJobDescription(employee.getJobDescription());
+            response.setId(employee.getId());
+            return response;
+
+        }
         return null;
     }
 
