@@ -7,6 +7,7 @@ import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -61,7 +62,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
     }
 
     @Override
-    public EmployeeResponse getAllEmployees(Long id) {
-        return null;
+    public List<Employee> getAllEmployees() {
+        return repository.findAll();
     }
 }
