@@ -6,8 +6,9 @@ import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
 
 public interface EmployeeServices {
     EmployeeResponse addEmployee(EmployeeRequest employeeRequest);
-    void deleteEmployeeById(Long id);
     void deleteEmployee(Employee employee);
+    void deleteEmployeeById(Long id);
+    EmployeeResponse updateEmployeeRecord(EmployeeRequest employeeRequest);
     EmployeeResponse getEmployeeById(Long id);
     EmployeeResponse getAllEmployees(Long id);
 }
