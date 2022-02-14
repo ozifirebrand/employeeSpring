@@ -1,5 +1,6 @@
 package africa.semicolon.employeeProgram.services;
 
+import africa.semicolon.employeeProgram.data.models.Employee;
 import africa.semicolon.employeeProgram.data.repositories.EmployeeRepository;
 import africa.semicolon.employeeProgram.dtos.EmployeeRequest;
 import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
@@ -56,6 +57,15 @@ class EmployeeServicesImplTest {
 
     @Test
     void deleteEmployee() {
+        EmployeeResponse response= createEmployee();
+        Employee employee = new Employee();
+        employee.setFirstName(response.getFirstName());
+        employee.setJobDescription(response.getJobDescription());
+        employee.setId(response.getId());
+        log.info("Employee with id {}", services.getEmployeeById(employee.getId()));
+        services.deleteEmployee(employee);
+        assertThat(services.getEmployeeById(employee.getId())).isNull();
+        log.info("is now {}", services.getEmployeeById(employee.getId()));
     }
 
     @Test
