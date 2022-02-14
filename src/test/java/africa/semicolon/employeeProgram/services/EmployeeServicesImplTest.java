@@ -22,6 +22,7 @@ class EmployeeServicesImplTest {
 
     @BeforeEach
     void setUp() {
+
     }
 
     @AfterEach
@@ -31,23 +32,26 @@ class EmployeeServicesImplTest {
     @Test
     void addEmployee() {
         EmployeeRequest request = new EmployeeRequest();
+        EmployeeResponse response = new EmployeeResponse();
         request.setFirstName("Shayto");
         request.setLastName("Thomas");
         request.setJobDescription("HR");
-        log.info("repository is :: {}", services);
-        EmployeeResponse response = services.addEmployee(request);
+        response = services.addEmployee(request);
+        log.info("id of response is {}", response.getId());
 
         assertThat(response).isNotNull();
-        log.info("id of response is {}", response.getId());
         assertThat(response.getId()).isNotNull();
         assertThat(response.getFirstName()).isEqualTo("Shayto");
         assertThat(response.getJobDescription()).isEqualTo("HR");
-
-
     }
 
     @Test
     void deleteEmployeeById() {
+        EmployeeResponse newResponse = createEmployee();
+        services.deleteEmployeeById(newResponse.getId());
+        EmployeeResponse responseAgain = services.getEmployeeById(newResponse.getId());
+        assertThat(responseAgain).isNull();
+
     }
 
     @Test
@@ -56,9 +60,26 @@ class EmployeeServicesImplTest {
 
     @Test
     void getEmployeeById() {
+        EmployeeResponse response = createEmployee();
+        EmployeeResponse foundResponse = services.getEmployeeById(response.getId());
+        assertThat(foundResponse.getId()).isEqualTo(response.getId());
+        assertThat(foundResponse.getFirstName()).isEqualTo(response.getFirstName());
+        assertThat(foundResponse.getJobDescription()).isEqualTo(response.getJobDescription());
+    }
+
+    private EmployeeResponse createEmployee() {
+        EmployeeRequest newRequest = new EmployeeRequest();
+        newRequest.setFirstName("Shayto");
+        newRequest.setLastName("Thomas");
+        newRequest.setJobDescription("HR");
+        return services.addEmployee(newRequest);
     }
 
     @Test
     void getAllEmployees() {
+    }
+
+    @Test
+    void updateEmployeeRecord() {
     }
 }
