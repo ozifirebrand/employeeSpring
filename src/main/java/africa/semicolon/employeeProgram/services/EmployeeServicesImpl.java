@@ -42,7 +42,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
 
     @Override
     public void deleteEmployee(Employee employee) {
-
+        repository.delete(employee);
     }
 
     @Override
