@@ -38,7 +38,10 @@ class EmployeeServicesImplTest {
         EmployeeResponse response = services.addEmployee(request);
 
         assertThat(response).isNotNull();
+        log.info("id of response is {}", response.getId());
         assertThat(response.getId()).isNotNull();
+        assertThat(response.getFirstName()).isEqualTo("Shayto");
+        assertThat(response.getJobDescription()).isEqualTo("HR");
 
 
     }
