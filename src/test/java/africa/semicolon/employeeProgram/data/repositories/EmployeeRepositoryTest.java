@@ -43,14 +43,14 @@ class EmployeeRepositoryTest {
 //
 //
 //        assertThat(repository).isNotNull();
-//        log.info("Employee id is :: {}", shayto.getId());
+//        log.info("EmployeeResponse id is :: {}", shayto.getId());
 //        assertThat(shayto.getId()).isNotNull();
 //
 //    }
 //
 //    @Test
 //    public void testCanGetEmployee(){
-//        Employee savedEmployee = repository.findById(shayto.getId()).get();
+//        EmployeeResponse savedEmployee = repository.findById(shayto.getId()).get();
 //        assertThat(savedEmployee.getId()).isEqualTo(shayto.getId());
 //    }
 
