@@ -37,21 +37,28 @@ public class EmployeeServicesImpl implements EmployeeServices {
     }
 
     @Override
-    public EmployeeResponse updateEmployeeRecord(EmployeeRequest employeeRequest) {
+    public africa.semicolon.employeeProgram.data.models.Employee updateEmployeeRecord(Long id, EmployeeRequest employeeRequest) {
+        Optional<africa.semicolon.employeeProgram.data.models.Employee> optionalEmployee = repository.findById(id);
+        if ( optionalEmployee.isPresent() ){
+            africa.semicolon.employeeProgram.data.models.Employee employee = optionalEmployee.get();
+            employee.setFirstName(employeeRequest.getFirstName());
+
+            return employee;
+        }
         return null;
     }
 
     @Override
-    public void deleteEmployee(Employee employee) {
+    public void deleteEmployee(africa.semicolon.employeeProgram.data.models.Employee employee) {
         repository.delete(employee);
     }
 
     @Override
     public EmployeeResponse getEmployeeById(Long id) {
         EmployeeResponse response = new EmployeeResponse();
-        Optional<Employee> optionalEmployee = repository.findById(id);
+        Optional<africa.semicolon.employeeProgram.data.models.Employee> optionalEmployee = repository.findById(id);
         if ( optionalEmployee.isPresent() ) {
-            Employee employee = optionalEmployee.get();
+            africa.semicolon.employeeProgram.data.models.Employee employee = optionalEmployee.get();
             response.setFirstName(employee.getFirstName());
             response.setJobDescription(employee.getJobDescription());
             response.setId(employee.getId());
@@ -62,7 +69,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<africa.semicolon.employeeProgram.data.models.Employee> getAllEmployees() {
         return repository.findAll();
     }
 }
