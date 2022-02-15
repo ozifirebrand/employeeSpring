@@ -1,5 +1,6 @@
 package africa.semicolon.employeeProgram.services;
 
+import africa.semicolon.employeeProgram.data.models.Employee;
 import africa.semicolon.employeeProgram.dtos.EmployeeRequest;
 import africa.semicolon.employeeProgram.dtos.EmployeeResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ class EmployeeServicesImplTest {
 
     @AfterEach
     void tearDown() {
+        services.deleteAllEmployees();
     }
 
     private EmployeeResponse createEmployee() {
@@ -38,13 +40,8 @@ class EmployeeServicesImplTest {
     }
 
     @Test
-    void addEmployee() {
-        EmployeeRequest request = new EmployeeRequest();
-        EmployeeResponse response;
-        request.setFirstName("Shayto");
-        request.setLastName("Thomas");
-        request.setJobDescription("HR");
-        response = services.addEmployee(request);
+    public void addEmployee() {
+        EmployeeResponse response= createEmployee();
         log.info("id of response is {}", response.getId());
 
         assertThat(response).isNotNull();
@@ -53,8 +50,14 @@ class EmployeeServicesImplTest {
         assertThat(response.getJobDescription()).isEqualTo("HR");
     }
 
+//    @Test
+//    public void testCanEmployeeOnceAlone(){
+//        createEmployee();
+//    }
+
+
     @Test
-    void deleteEmployeeById() {
+    public void deleteEmployeeById() {
         EmployeeResponse newResponse = createEmployee();
         services.deleteEmployeeById(newResponse.getId());
         EmployeeResponse responseAgain = services.getEmployeeById(newResponse.getId());
@@ -63,7 +66,7 @@ class EmployeeServicesImplTest {
     }
 
     @Test
-    void deleteEmployee() {
+    public void deleteEmployee() {
         EmployeeResponse response= createEmployee();
         africa.semicolon.employeeProgram.data.models.Employee employee = new africa.semicolon.employeeProgram.data.models.Employee();
         employee.setFirstName(response.getFirstName());
@@ -76,7 +79,7 @@ class EmployeeServicesImplTest {
     }
 
     @Test
-    void getEmployeeById() {
+    public void getEmployeeById() {
         EmployeeResponse response = createEmployee();
         EmployeeResponse foundResponse = services.getEmployeeById(response.getId());
         assertThat(foundResponse.getId()).isEqualTo(response.getId());
@@ -85,16 +88,20 @@ class EmployeeServicesImplTest {
     }
 
     @Test
-    void getAllEmployees() {
-        List<africa.semicolon.employeeProgram.data.models.Employee> employees = services.getAllEmployees();
+    public void getAllEmployees() {
+        List<Employee> employees = services.getAllEmployees();
         log.info("{}",employees.size());
-        /*todo --> size changes with each test run
-        assertThat(employees.size()).isEqualTo(41);
-         */
+        assertThat(employees.size()).isEqualTo(0);
+        createEmployee();
+        createEmployee();
+        createEmployee();
+        assertThat(services.getAllEmployees().size()).isEqualTo(3);
+
+
     }
 
     @Test
-    void updateEmployeeRecord() {
+    public void updateEmployeeRecord() {
         EmployeeResponse response = createEmployee();
         log.info("EmployeeResponse with id {}", services.getEmployeeById(response.getId()));
 
