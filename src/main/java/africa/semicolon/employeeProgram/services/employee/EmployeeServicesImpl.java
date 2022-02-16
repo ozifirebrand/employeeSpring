@@ -1,4 +1,4 @@
-package africa.semicolon.employeeProgram.services;
+package africa.semicolon.employeeProgram.services.employee;
 
 import africa.semicolon.employeeProgram.data.models.Employee;
 import africa.semicolon.employeeProgram.data.repositories.EmployeeRepository;

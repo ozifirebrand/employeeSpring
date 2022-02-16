@@ -1,11 +1,10 @@
 package africa.semicolon.employeeProgram.controllers;
 
-import africa.semicolon.employeeProgram.data.models.Employee;
-import africa.semicolon.employeeProgram.services.EmployeeServices;
+import africa.semicolon.employeeProgram.dtos.EmployeeRequest;
+import africa.semicolon.employeeProgram.services.employee.EmployeeServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController("api/employee")
 public class EmployeeController {
@@ -13,8 +12,9 @@ public class EmployeeController {
     private EmployeeServices services;
 
     @PostMapping
-    public ResponseEntity<?> createEmployee(){
+    public ResponseEntity<?> createEmployee(@RequestBody EmployeeRequest request){
 
-        return ResponseEntity.status(200).body(new Employee());
+//        services.addEmployee()
+        return null;
     }
 }
