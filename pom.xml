@@ -62,13 +62,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-    </dependencies>
-	<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
-	<dependency>
-		<groupId>com.cloudinary</groupId>
-		<artifactId>cloudinary-http44</artifactId>
-		<version>1.30.0</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.30.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
