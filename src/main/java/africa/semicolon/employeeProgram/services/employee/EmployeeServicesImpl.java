@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -87,5 +88,15 @@ public class EmployeeServicesImpl implements EmployeeServices {
     public void deleteAllEmployees() {
         repository.deleteAll();
         repository.findAll();
+    }
+
+    @Override
+    public Map<?, ?> uploadEmployeePicture(byte[] bytes, Map<?, ?> params) {
+        return null;
+    }
+
+    @Override
+    public String generateEmployeeId(Employee employee) {
+        return null;
     }
 }
